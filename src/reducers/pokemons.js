@@ -1,9 +1,8 @@
 import { fromJS } from "immutable";
-import { SET_LOADING, SET_POKEMONS, SET_READYCOMBAT } from "../actions/types";
+import { SET_POKEMONS, SET_READYCOMBAT } from "../actions/types";
 
 const initialState = fromJS({
     pokemons: [],
-    loading: false,
 });
 
 export const pokemonsReducer = (state = initialState, action) => {
@@ -22,8 +21,6 @@ export const pokemonsReducer = (state = initialState, action) => {
             const iSReadyCombat = state.getIn(['pokemons', currentPokemonIndex, 'readyCombat']);
             
             return state.setIn(['pokemons', currentPokemonIndex, 'readyCombat'], fromJS(!iSReadyCombat));
-        case SET_LOADING:
-            return state.setIn(['loading'],  fromJS(action.payload));
     default:
         return state;
     }
