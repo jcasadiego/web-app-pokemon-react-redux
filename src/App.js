@@ -18,6 +18,14 @@ function App() {
     state.getIn(['ui', 'loading'])
   );
 
+  const searchedPokemons = useSelector((state) => 
+    state.getIn(['data', 'pokemonsSearched'], shallowEqual)
+  ).toJS();
+
+  const valueInputSearch = useSelector((state) => 
+    state.getIn(['ui', 'valueInputSearch'])
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,7 +51,7 @@ function App() {
         <Spin spinning size='large' />
       </Col> 
       ) : (
-        <PokemonList pokemons={pokemons}/>
+        <PokemonList searchedPokemons={searchedPokemons} valueInputSearch={valueInputSearch} pokemons={pokemons}/>
       )}
     </div>
   );

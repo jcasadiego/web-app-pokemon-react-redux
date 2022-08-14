@@ -1,5 +1,5 @@
 import { getPokemonDetails } from "../api";
-import { SET_LOADING, SET_POKEMONS, SET_READYCOMBAT } from "./types";
+import { SET_LOADING, SET_POKEMONS, SET_READYCOMBAT, SET_SEARCH, SET_VALUESEARCH } from "./types";
 
 export const setPokemons = (payload) => ({
     type: SET_POKEMONS,
@@ -20,5 +20,15 @@ export const getPokemonsWithDetails = (pokemons = []) =>
 
 export const setReadyCombat = (payload) => ({
     type: SET_READYCOMBAT,
+    payload,
+});
+
+export const setValueSearch = (payload) => ({
+    type: SET_VALUESEARCH,
+    payload,
+});
+
+export const setSearch = (payload) => ({
+    type: SET_SEARCH,
     payload,
 });
