@@ -32,7 +32,7 @@ export const pokemonsReducer = (state = initialState, action) => {
                 );
                 return state.setIn(['pokemonsSearched'], fromJS(result));
             } else {
-                return state;
+                return state.setIn(['pokemonsSearched'], fromJS([]));
             }
     default:
         return state;
