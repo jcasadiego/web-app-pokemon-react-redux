@@ -14,3 +14,12 @@ export const getPokemonDetails = (pokemon) => {
         .then(res => res.data)
         .catch((err) => console.error(err));
 };
+
+export const getPokemonId = async (id) => {
+    try {
+        const pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+        return pokemon;
+    } catch (error) {
+        console.error(error.message);
+    }
+};

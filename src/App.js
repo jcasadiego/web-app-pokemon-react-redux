@@ -27,6 +27,8 @@ function App() {
     state.getIn(['ui', 'valueInputSearch'])
   );
 
+  const pokemonReady = [];
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -61,7 +63,7 @@ function App() {
           <Affix>
             <div>
               <h1>Listos para el combate</h1>
-              <ReadyCombatList pokemons={pokemons}/>
+              <ReadyCombatList pokemons={pokemonReady}/>
             </div>
           </Affix>
         </Col>
