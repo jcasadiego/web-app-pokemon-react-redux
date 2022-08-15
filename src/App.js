@@ -1,6 +1,7 @@
-import { Col, Spin } from 'antd';
+import { Col, Spin, Row, Affix } from 'antd';
 import Searcher from './components/Searcher';
 import PokemonList from './components/PokemonList';
+import ReadyCombatList from './components/ReadyCombatList';
 import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { getPokemonsWithDetails, setLoading } from './actions/index'
@@ -40,19 +41,31 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-    <Col span={4} offset={10}>
-      <img src={logo} alt="Pokedux"/>
-    </Col>
-      <Col span={8} offset={8}>
-        <Searcher />
-      </Col>
-      {loading ? ( <Col offset={12}>
-        <Spin spinning size='large' />
-      </Col> 
-      ) : (
-        <PokemonList searchedPokemons={searchedPokemons} valueInputSearch={valueInputSearch} pokemons={pokemons}/>
-      )}
+    <div className='App'>
+      <Row>
+        <Col span={18}>
+          <Col span={4} offset={10}>
+            <img src={logo} alt="Pokedux"/>
+          </Col>
+          <Col span={8} offset={8}>
+            <Searcher />
+          </Col>
+          {loading ? ( <Col offset={12}>
+            <Spin spinning size='large' />
+          </Col> 
+          ) : (
+            <PokemonList searchedPokemons={searchedPokemons} valueInputSearch={valueInputSearch} pokemons={pokemons}/>
+          )}
+        </Col>
+        <Col span={6}>
+          <Affix>
+            <div>
+              <h1>Listos para el combate</h1>
+              <ReadyCombatList pokemons={pokemons}/>
+            </div>
+          </Affix>
+        </Col>
+      </Row>
     </div>
   );
 }
